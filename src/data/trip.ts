@@ -154,7 +154,7 @@ export interface FlightTrack {
 }
 
 export const trip: TripData = {
-  name: '富國島 6 日旅行',
+  name: '富國島 6 天 5 夜',
   destination: '越南富國島',
   startDate: '2026-07-12',
   endDate: '2026-07-17',
