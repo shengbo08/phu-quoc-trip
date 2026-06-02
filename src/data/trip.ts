@@ -268,6 +268,18 @@ export const trip: TripData = {
         },
         {
           id: 'd5-a2',
+          time: '17:00',
+          place: 'On The Rock Restaurant & Beach Bar',
+          activity: '海邊晚餐，看夕陽、拍照、休息',
+          address: 'Mango Bay Resort, Ong Lang Beach, Phu Quoc, Vietnam',
+          googleMapsUrl:
+            'https://maps.google.com/?q=On+The+Rock+Restaurant+%26+Beach+Bar+Phu+Quoc',
+          note: 'Google 評分約 4.3。建議提早訂位，夕陽時段人可能較多。',
+          transport: '飯店接駁或計程車',
+          estimatedCost: { amount: 800000, currency: 'VND' },
+        },
+        {
+          id: 'd5-a3',
           time: '19:00',
           place: 'Wyndham Grand Phu Quoc',
           activity: '回飯店休息，泳池、海灘或賭場自由活動',
