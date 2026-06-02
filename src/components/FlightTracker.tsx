@@ -1,13 +1,12 @@
-import { ExternalLink, PlaneLanding, PlaneTakeoff, Ticket } from 'lucide-react';
+import { ExternalLink, PlaneLanding, PlaneTakeoff } from 'lucide-react';
 import type { FlightTrack } from '../data/trip';
 import { EmptyState } from './EmptyState';
 
 interface FlightTrackerProps {
   flights: FlightTrack[];
-  ticketNotes?: string[];
 }
 
-export function FlightTracker({ flights, ticketNotes = [] }: FlightTrackerProps) {
+export function FlightTracker({ flights }: FlightTrackerProps) {
   if (flights.length === 0) return <EmptyState />;
 
   const outboundFlights = flights.filter((flight) => flight.direction === '去程');
@@ -26,23 +25,6 @@ export function FlightTracker({ flights, ticketNotes = [] }: FlightTrackerProps)
           <TrackerLink href="https://www.kia.gov.tw/" label="機場官網查詢" />
         </div>
       </div>
-
-      {ticketNotes.length > 0 ? (
-        <div>
-          <h3 className="mb-3 text-xl font-bold text-stone-950">票券備註</h3>
-          <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
-            <div className="mb-3 flex items-center gap-2 font-bold text-amber-900">
-              <Ticket className="h-5 w-5" aria-hidden="true" />
-              電子票券與接送資訊
-            </div>
-            <ul className="space-y-2 text-sm leading-6 text-stone-700">
-              {ticketNotes.map((note) => (
-                <li key={note}>• {note}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      ) : null}
     </div>
   );
 }

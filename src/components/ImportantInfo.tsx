@@ -1,5 +1,4 @@
 import {
-  AlertTriangle,
   BadgeInfo,
   FileText,
   Globe2,
@@ -10,10 +9,7 @@ import {
   ShieldAlert,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import type {
-  ImportantInfo as ImportantInfoType,
-  TransferNotice,
-} from '../data/trip';
+import type { ImportantInfo as ImportantInfoType, TransferNotice } from '../data/trip';
 import { valueOrEmpty } from '../utils/format';
 
 interface ImportantInfoProps {
@@ -26,25 +22,7 @@ export function ImportantInfo({ info }: ImportantInfoProps) {
       <InfoCard icon={BadgeInfo} title="護照與簽證" content={valueOrEmpty(info.passportVisa)} />
       <InfoCard icon={Phone} title="緊急聯絡" content={valueOrEmpty(info.emergencyContact)} />
       <InfoCard icon={Globe2} title="網路 SIM / eSIM" content={valueOrEmpty(info.internet)} />
-      <InfoCard icon={Landmark} title="貨幣與匯率" content={valueOrEmpty(info.currencyNote)} />
-
-      <article className="rounded-lg border border-stone-200 bg-white p-5 shadow-sm lg:col-span-2">
-        <div className="mb-3 flex items-center gap-3">
-          <AlertTriangle className="h-5 w-5 text-teal-700" aria-hidden="true" />
-          <h3 className="text-lg font-bold text-stone-950">當地注意事項</h3>
-        </div>
-        {info.localNotes?.length ? (
-          <ul className="grid gap-2 text-sm leading-6 text-stone-600 sm:grid-cols-3">
-            {info.localNotes.map((note) => (
-              <li key={note} className="rounded-lg bg-stone-50 p-3">
-                {note}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-sm text-stone-500">尚未填寫</p>
-        )}
-      </article>
+      <InfoCard icon={Landmark} title="匯率與費用" content={valueOrEmpty(info.currencyNote)} />
 
       <TransferNoticeList notices={info.transferNotices ?? []} />
     </div>
@@ -80,7 +58,7 @@ function TransferNoticeList({ notices }: TransferNoticeListProps) {
     <article className="rounded-lg border border-amber-200 bg-amber-50/70 p-5 shadow-sm lg:col-span-2">
       <div className="mb-4 flex items-center gap-3">
         <Plane className="h-5 w-5 text-amber-700" aria-hidden="true" />
-        <h3 className="text-lg font-bold text-stone-950">轉機注意事項</h3>
+        <h3 className="text-lg font-bold text-stone-950">轉機提醒</h3>
       </div>
 
       <div className="grid gap-3 md:grid-cols-2">
@@ -93,7 +71,7 @@ function TransferNoticeList({ notices }: TransferNoticeListProps) {
 }
 
 function TransferNoticeCard({ notice }: { notice: TransferNotice }) {
-  const Icon = notice.title.includes('資料')
+  const Icon = notice.title.includes('票券')
     ? FileText
     : notice.title.includes('行李')
       ? ShieldAlert
@@ -113,9 +91,7 @@ function TransferNoticeCard({ notice }: { notice: TransferNotice }) {
       ) : null}
 
       {notice.warning ? (
-        <p className="mb-3 text-sm font-semibold leading-6 text-red-600">
-          {notice.warning}
-        </p>
+        <p className="mb-3 text-sm font-semibold leading-6 text-red-600">{notice.warning}</p>
       ) : null}
 
       {notice.details.length > 0 ? (

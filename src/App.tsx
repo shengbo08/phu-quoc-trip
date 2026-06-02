@@ -57,7 +57,7 @@ function App() {
         </Section>
 
         <Section id="transport" eyebrow="Flights" title="航班追蹤">
-          <FlightTracker flights={trip.flightTracks} ticketNotes={trip.flightTicketNotes} />
+          <FlightTracker flights={trip.flightTracks} />
         </Section>
 
         <Section id="stays" eyebrow="Stay" title="住宿資訊">
