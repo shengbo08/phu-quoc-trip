@@ -98,7 +98,7 @@ export const trip: TripData = {
     '7/12 到 7/17 的富國島行程，包含越南航空航班、三段住宿、Sun World 跨海纜車、水陸遊樂園、富國大世界與珍珠奇幻樂園。',
   companionsNote: '目前花費：NT$8,324 機票 + NT$5,720 住宿，共 NT$14,044 / 人。',
   coverImageUrl:
-    'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1800&q=80',
+    'https://images.unsplash.com/photo-1758657281824-239a1bfb3c92?auto=format&fit=crop&fm=jpg&q=85&w=2400',
   homeBaseCurrency: 'TWD',
   days: [
     {
