@@ -4,6 +4,7 @@ export type ExchangeRates = Record<CurrencyCode, number>;
 
 const fallbackRatesToTwd: ExchangeRates = {
   TWD: 1,
+  VND: 0.0012,
   JPY: 0.21,
   USD: 32,
   EUR: 35,

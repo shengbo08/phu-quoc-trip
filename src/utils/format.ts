@@ -2,6 +2,7 @@ import type { CurrencyCode, Money } from '../data/trip';
 
 export const currencyLabels: Record<CurrencyCode, string> = {
   TWD: 'NT$',
+  VND: '₫',
   JPY: 'JP¥',
   USD: 'US$',
   EUR: '€',
