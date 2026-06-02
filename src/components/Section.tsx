@@ -9,7 +9,7 @@ interface SectionProps {
 
 export function Section({ id, eyebrow, title, children }: SectionProps) {
   return (
-    <section id={id} className="scroll-mt-24 py-8 sm:py-12">
+    <section id={id} className="min-w-0 scroll-mt-24 py-8 sm:py-12">
       <div className="mb-5">
         {eyebrow ? (
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-teal-700">

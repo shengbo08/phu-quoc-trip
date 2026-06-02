@@ -38,7 +38,7 @@ function App() {
     <div className="min-h-screen bg-[#f6f3ee]">
       <Hero trip={trip} />
 
-      <main className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
+      <main className="mx-auto max-w-6xl overflow-hidden px-4 pb-16 sm:px-6">
         <Section id="live" eyebrow="Live" title="即時資訊">
           <div className="grid gap-4 lg:grid-cols-2">
             <WeatherCard onDailyWeatherChange={handleDailyWeatherChange} />

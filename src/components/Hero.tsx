@@ -50,7 +50,7 @@ export function Hero({ trip }: HeroProps) {
         <h1 className="max-w-4xl text-4xl font-black leading-tight sm:text-6xl">
           {trip.name}
         </h1>
-        <p className="mt-5 max-w-full break-words text-base leading-8 text-white/88 [overflow-wrap:anywhere] sm:max-w-2xl sm:text-lg">
+        <p className="mt-5 w-full max-w-[calc(100vw-2rem)] break-words text-base leading-8 text-white/88 [overflow-wrap:anywhere] sm:max-w-2xl sm:text-lg">
           {trip.intro}
         </p>
         <div className="mt-7 grid gap-3 text-sm sm:grid-cols-2 lg:grid-cols-3">

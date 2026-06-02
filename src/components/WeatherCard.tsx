@@ -43,7 +43,7 @@ export function WeatherCard({ onDailyWeatherChange }: WeatherCardProps) {
   }, [onDailyWeatherChange]);
 
   return (
-    <article className="rounded-lg border border-sky-100 bg-white p-5 shadow-sm">
+    <article className="min-w-0 rounded-lg border border-sky-100 bg-white p-5 shadow-sm">
       <div className="mb-4 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <span className="rounded-lg bg-sky-50 p-3 text-sky-700">
