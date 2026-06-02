@@ -16,24 +16,24 @@ export function Hero({ trip }: HeroProps) {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-stone-950/35 via-stone-950/30 to-stone-950/80" />
 
-      <nav className="relative z-10 mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-5 sm:px-6">
-        <a className="text-sm font-semibold tracking-wide" href="#top">
+      <nav className="relative z-10 mx-auto flex max-w-6xl flex-col gap-3 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <a className="w-fit text-sm font-semibold tracking-wide" href="#top">
           Travel Plan
         </a>
-        <div className="flex flex-wrap gap-2 text-sm text-white/90">
-          <a className="rounded-md px-3 py-2 transition hover:bg-white/15" href="#live">
+        <div className="-mx-1 flex max-w-full gap-1 overflow-x-auto px-1 text-sm text-white/90 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:flex-wrap sm:justify-end sm:gap-2 sm:overflow-visible sm:px-0">
+          <a className="shrink-0 rounded-md px-2.5 py-2 transition hover:bg-white/15 sm:px-3" href="#live">
             即時
           </a>
-          <a className="rounded-md px-3 py-2 transition hover:bg-white/15" href="#overview">
+          <a className="shrink-0 rounded-md px-2.5 py-2 transition hover:bg-white/15 sm:px-3" href="#overview">
             總覽
           </a>
-          <a className="rounded-md px-3 py-2 transition hover:bg-white/15" href="#details">
+          <a className="shrink-0 rounded-md px-2.5 py-2 transition hover:bg-white/15 sm:px-3" href="#details">
             詳細
           </a>
-          <a className="rounded-md px-3 py-2 transition hover:bg-white/15" href="#maps">
+          <a className="shrink-0 rounded-md px-2.5 py-2 transition hover:bg-white/15 sm:px-3" href="#maps">
             地圖
           </a>
-          <a className="rounded-md px-3 py-2 transition hover:bg-white/15" href="#emergency">
+          <a className="shrink-0 rounded-md px-2.5 py-2 transition hover:bg-white/15 sm:px-3" href="#emergency">
             緊急
           </a>
         </div>
@@ -50,7 +50,7 @@ export function Hero({ trip }: HeroProps) {
         <h1 className="max-w-4xl text-4xl font-black leading-tight sm:text-6xl">
           {trip.name}
         </h1>
-        <p className="mt-5 max-w-2xl text-base leading-8 text-white/88 sm:text-lg">
+        <p className="mt-5 max-w-full break-words text-base leading-8 text-white/88 [overflow-wrap:anywhere] sm:max-w-2xl sm:text-lg">
           {trip.intro}
         </p>
         <div className="mt-7 grid gap-3 text-sm sm:grid-cols-2 lg:grid-cols-3">
