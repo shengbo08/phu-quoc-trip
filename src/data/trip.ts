@@ -71,6 +71,14 @@ export interface ImportantInfo {
   localNotes?: string[];
   internet?: string;
   currencyNote?: string;
+  transferNotices?: TransferNotice[];
+}
+
+export interface TransferNotice {
+  title: string;
+  highlight?: string;
+  warning?: string;
+  details: string[];
 }
 
 export interface TripData {
@@ -441,6 +449,41 @@ export const trip: TripData = {
     },
   ],
   importantInfo: {
+    transferNotices: [
+      {
+        title: '轉機流程',
+        highlight: '領取綠色 Transfer 轉機貼紙。',
+        warning:
+          '抵達胡志明市會看到 Transfer 的牌子，有一位穿著越南航空制服的人員站在那邊，大約在海關旁。越航會帶你到資料填寫處。',
+        details: [
+          '下飛機後會經過越南航空轉機櫃檯。',
+          '告知櫃台需要轉機到富國島。',
+          '越航會帶你到資料填寫處。',
+        ],
+      },
+      {
+        title: '資料填寫',
+        details: [
+          '繳交每一位旅客的來回電子機票 PDF 檔案。',
+          '填寫護照姓名、國籍、性別及護照號碼等基本資料。',
+          '越航地勤會帶你到海關的地方，並協助送你入關。',
+        ],
+      },
+      {
+        title: '行李直掛',
+        warning:
+          '中途轉機時有些人遇到不需要領行李，也有人仍需要領行李，建議在辦理報到時一定要跟地勤詢問確定！',
+        details: [],
+      },
+      {
+        title: '國際線轉國內線',
+        details: [
+          '抵達胡志明市機場後，從國際線出口出大門。',
+          '出大門之後往右走，找到國內線 Domestic Terminal（轉機航廈）。',
+          '接著搭 Gate / Security 的手扶梯到二樓登機門。',
+        ],
+      },
+    ],
     passportVisa:
       '請確認護照效期與越南入境規定。實際簽證/免簽規則請出發前再以官方公告為準。',
     emergencyContact:
