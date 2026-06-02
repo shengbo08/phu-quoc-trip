@@ -95,6 +95,58 @@ export interface TripData {
   transports: TransportInfo[];
   budget: BudgetItem[];
   importantInfo: ImportantInfo;
+  emergencyContacts: EmergencyContact[];
+  mapPlaces: MapPlace[];
+  mapCollectionUrl?: string;
+  foodRecommendations: FoodCategory[];
+  flightTracks: FlightTrack[];
+}
+
+export interface EmergencyContact {
+  id: string;
+  category: string;
+  name: string;
+  phone?: string;
+  address?: string;
+  googleMapsUrl?: string;
+}
+
+export interface MapPlace {
+  id: string;
+  category: string;
+  name: string;
+  googleMapsUrl: string;
+}
+
+export interface FoodCategory {
+  category: string;
+  restaurants: FoodRecommendation[];
+}
+
+export interface FoodRecommendation {
+  id: string;
+  name: string;
+  recommendedItems: string;
+  googleMapsUrl: string;
+  photoUrl: string;
+  rating: string;
+  hours: string;
+  averageSpend: string;
+}
+
+export interface FlightTrack {
+  id: string;
+  direction: '去程' | '回程';
+  airline: string;
+  flightNumber: string;
+  from: string;
+  to: string;
+  departureTime: string;
+  arrivalTime: string;
+  terminal?: string;
+  flightRadarUrl: string;
+  flightAwareUrl: string;
+  airportUrl: string;
 }
 
 export const trip: TripData = {
@@ -509,4 +561,274 @@ export const trip: TripData = {
     currencyNote:
       '目前以你提供的匯率 1 VND = 0.0012 TWD 做估算；網站也會嘗試抓即時匯率，抓不到時使用備用匯率。',
   },
+  emergencyContacts: [
+    {
+      id: 'taipei-office-hcmc',
+      category: '台灣駐胡志明辦事處',
+      name: '駐胡志明市台北經濟文化辦事處',
+      phone: '+84-28-3962-1745',
+      address: '336 Nguyen Tri Phuong St., Ward 4, District 10, Ho Chi Minh City',
+      googleMapsUrl:
+        'https://maps.google.com/?q=Taipei+Economic+and+Cultural+Office+in+Ho+Chi+Minh+City',
+    },
+    {
+      id: 'vinmec-phu-quoc',
+      category: '富國島醫院',
+      name: 'Vinmec International Hospital Phu Quoc',
+      phone: '+84-297-3985-588',
+      address: 'Bai Dai, Ganh Dau, Phu Quoc, Kien Giang, Vietnam',
+      googleMapsUrl: 'https://maps.google.com/?q=Vinmec+International+Hospital+Phu+Quoc',
+    },
+    {
+      id: 'vietnam-emergency',
+      category: '越南緊急電話',
+      name: '警察 113 / 消防 114 / 救護車 115',
+      phone: '113 / 114 / 115',
+      address: 'Vietnam',
+      googleMapsUrl: 'https://maps.google.com/?q=Phu+Quoc+Vietnam',
+    },
+    {
+      id: 'hotel-rosie-contact',
+      category: '飯店聯絡方式',
+      name: 'Rosie Hillside Seaview Phu Quoc Apartment',
+      phone: '訂房平台或飯店訊息確認',
+      address: 'An Thoi, Phu Quoc, Vietnam',
+      googleMapsUrl:
+        'https://maps.google.com/?q=Rosie+Hillside+Seaview+Phu+Quoc+Apartment',
+    },
+    {
+      id: 'hotel-ocean-bay-contact',
+      category: '飯店聯絡方式',
+      name: 'Grand Resort Ocean Bay Phu Quoc',
+      phone: '訂房平台或飯店訊息確認',
+      address: 'Phu Quoc, Kien Giang, Vietnam',
+      googleMapsUrl: 'https://maps.google.com/?q=Grand+Resort+Ocean+Bay+Phu+Quoc',
+    },
+    {
+      id: 'hotel-wyndham-contact',
+      category: '飯店聯絡方式',
+      name: 'Wyndham Grand Phu Quoc',
+      phone: '+84-297-3691-555',
+      address: 'Bai Dai Area, Ganh Dau, Phu Quoc, Vietnam',
+      googleMapsUrl: 'https://maps.google.com/?q=Wyndham+Grand+Phu+Quoc',
+    },
+  ],
+  mapCollectionUrl:
+    'https://www.google.com/maps/search/?api=1&query=Phu+Quoc+Sunset+Town+Hon+Thom+Cable+Car+Grand+World+VinWonders',
+  mapPlaces: [
+    {
+      id: 'pqc-airport',
+      category: '機場',
+      name: 'Phu Quoc International Airport',
+      googleMapsUrl: 'https://maps.google.com/?q=Phu+Quoc+International+Airport',
+    },
+    {
+      id: 'sgn-airport',
+      category: '機場',
+      name: 'Tan Son Nhat International Airport',
+      googleMapsUrl: 'https://maps.google.com/?q=Tan+Son+Nhat+International+Airport',
+    },
+    {
+      id: 'rosie',
+      category: '飯店',
+      name: 'Rosie Hillside Seaview Phu Quoc Apartment',
+      googleMapsUrl:
+        'https://maps.google.com/?q=Rosie+Hillside+Seaview+Phu+Quoc+Apartment',
+    },
+    {
+      id: 'ocean-bay',
+      category: '飯店',
+      name: 'Grand Resort Ocean Bay Phu Quoc',
+      googleMapsUrl: 'https://maps.google.com/?q=Grand+Resort+Ocean+Bay+Phu+Quoc',
+    },
+    {
+      id: 'wyndham',
+      category: '飯店',
+      name: 'Wyndham Grand Phu Quoc',
+      googleMapsUrl: 'https://maps.google.com/?q=Wyndham+Grand+Phu+Quoc',
+    },
+    {
+      id: 'grand-world',
+      category: '景點',
+      name: 'Grand World Phu Quoc',
+      googleMapsUrl: 'https://maps.google.com/?q=Grand+World+Phu+Quoc',
+    },
+    {
+      id: 'vinwonders',
+      category: '景點',
+      name: 'VinWonders Phu Quoc',
+      googleMapsUrl: 'https://maps.google.com/?q=VinWonders+Phu+Quoc',
+    },
+    {
+      id: 'safari',
+      category: '景點',
+      name: 'Vinpearl Safari Phu Quoc',
+      googleMapsUrl: 'https://maps.google.com/?q=Vinpearl+Safari+Phu+Quoc',
+    },
+    {
+      id: 'sunset-town',
+      category: '景點',
+      name: 'Sunset Town Phu Quoc',
+      googleMapsUrl: 'https://maps.google.com/?q=Sunset+Town+Phu+Quoc',
+    },
+    {
+      id: 'hon-thom-cable-car',
+      category: '景點',
+      name: 'Hon Thom Cable Car',
+      googleMapsUrl: 'https://maps.google.com/?q=Hon+Thom+Cable+Car+Phu+Quoc',
+    },
+    {
+      id: 'night-market',
+      category: '夜市',
+      name: 'Phu Quoc Night Market',
+      googleMapsUrl: 'https://maps.google.com/?q=Phu+Quoc+Night+Market',
+    },
+  ],
+  foodRecommendations: [
+    {
+      category: '海鮮',
+      restaurants: [
+        {
+          id: 'on-the-rock',
+          name: 'On The Rock Restaurant & Beach Bar',
+          recommendedItems: '海鮮、夕陽晚餐、調酒',
+          googleMapsUrl:
+            'https://maps.google.com/?q=On+The+Rock+Restaurant+%26+Beach+Bar+Phu+Quoc',
+          photoUrl:
+            'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80',
+          rating: '4.3',
+          hours: '建議以 Google Maps 當日營業時間為準',
+          averageSpend: '約 600,000-1,000,000 VND / 人',
+        },
+        {
+          id: 'crab-house',
+          name: 'Crab House Phu Quoc',
+          recommendedItems: '螃蟹、海鮮拼盤',
+          googleMapsUrl: 'https://maps.google.com/?q=Crab+House+Phu+Quoc',
+          photoUrl:
+            'https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=900&q=80',
+          rating: '4.4',
+          hours: '建議以 Google Maps 當日營業時間為準',
+          averageSpend: '約 500,000-900,000 VND / 人',
+        },
+      ],
+    },
+    {
+      category: '越南料理',
+      restaurants: [
+        {
+          id: 'bun-quay-kien-xay',
+          name: 'Bun Quay Kien Xay',
+          recommendedItems: '富國島特色米粉、海鮮湯',
+          googleMapsUrl: 'https://maps.google.com/?q=Bun+Quay+Kien+Xay+Phu+Quoc',
+          photoUrl:
+            'https://images.unsplash.com/photo-1569058242567-93de6f36f8eb?auto=format&fit=crop&w=900&q=80',
+          rating: '4.2',
+          hours: '建議以 Google Maps 當日營業時間為準',
+          averageSpend: '約 80,000-180,000 VND / 人',
+        },
+        {
+          id: 'xin-chao',
+          name: 'Xin Chao Seafood Restaurant',
+          recommendedItems: '越式海鮮、烤物',
+          googleMapsUrl: 'https://maps.google.com/?q=Xin+Chao+Seafood+Restaurant+Phu+Quoc',
+          photoUrl:
+            'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80',
+          rating: '4.1',
+          hours: '建議以 Google Maps 當日營業時間為準',
+          averageSpend: '約 300,000-700,000 VND / 人',
+        },
+      ],
+    },
+    {
+      category: '咖啡廳',
+      restaurants: [
+        {
+          id: 'chuon-chuon',
+          name: 'Chuon Chuon Bistro & Sky Bar',
+          recommendedItems: '咖啡、早午餐、山景視野',
+          googleMapsUrl: 'https://maps.google.com/?q=Chuon+Chuon+Bistro+%26+Sky+Bar+Phu+Quoc',
+          photoUrl:
+            'https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=900&q=80',
+          rating: '4.3',
+          hours: '建議以 Google Maps 當日營業時間為準',
+          averageSpend: '約 150,000-350,000 VND / 人',
+        },
+      ],
+    },
+    {
+      category: '宵夜',
+      restaurants: [
+        {
+          id: 'phu-quoc-night-market-food',
+          name: 'Phu Quoc Night Market',
+          recommendedItems: '烤海鮮、越式小吃、甜點',
+          googleMapsUrl: 'https://maps.google.com/?q=Phu+Quoc+Night+Market',
+          photoUrl:
+            'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80',
+          rating: '4.0',
+          hours: '傍晚至深夜，依攤商為準',
+          averageSpend: '約 150,000-400,000 VND / 人',
+        },
+      ],
+    },
+  ],
+  flightTracks: [
+    {
+      id: 'vn583',
+      direction: '去程',
+      airline: '越南航空',
+      flightNumber: 'VN583',
+      from: 'KHH 高雄',
+      to: 'SGN 胡志明市',
+      departureTime: '2026-07-12 13:00',
+      arrivalTime: '2026-07-12 15:00',
+      terminal: '航廈請以機場當日資訊為準',
+      flightRadarUrl: 'https://www.flightradar24.com/data/flights/vn583',
+      flightAwareUrl: 'https://www.flightaware.com/live/flight/HVN583',
+      airportUrl: 'https://www.kia.gov.tw/',
+    },
+    {
+      id: 'vn1835',
+      direction: '去程',
+      airline: '越南航空',
+      flightNumber: 'VN1835',
+      from: 'SGN 胡志明市',
+      to: 'PQC 富國島',
+      departureTime: '2026-07-12 20:30',
+      arrivalTime: '2026-07-12 21:30',
+      terminal: '航廈請以機場當日資訊為準',
+      flightRadarUrl: 'https://www.flightradar24.com/data/flights/vn1835',
+      flightAwareUrl: 'https://www.flightaware.com/live/flight/HVN1835',
+      airportUrl: 'https://www.vietnamairport.vn/tansonnhatairport/en/',
+    },
+    {
+      id: 'vn1826',
+      direction: '回程',
+      airline: '越南航空',
+      flightNumber: 'VN1826',
+      from: 'PQC 富國島',
+      to: 'SGN 胡志明市',
+      departureTime: '2026-07-17 14:35',
+      arrivalTime: '2026-07-17 15:45',
+      terminal: '航廈請以機場當日資訊為準',
+      flightRadarUrl: 'https://www.flightradar24.com/data/flights/vn1826',
+      flightAwareUrl: 'https://www.flightaware.com/live/flight/HVN1826',
+      airportUrl: 'https://www.vietnamairport.vn/phuquocairport/en/',
+    },
+    {
+      id: 'vn580',
+      direction: '回程',
+      airline: '越南航空',
+      flightNumber: 'VN580',
+      from: 'SGN 胡志明市',
+      to: 'KHH 高雄',
+      departureTime: '2026-07-17 17:50',
+      arrivalTime: '2026-07-17 21:50',
+      terminal: '航廈請以機場當日資訊為準',
+      flightRadarUrl: 'https://www.flightradar24.com/data/flights/vn580',
+      flightAwareUrl: 'https://www.flightaware.com/live/flight/HVN580',
+      airportUrl: 'https://www.vietnamairport.vn/tansonnhatairport/en/',
+    },
+  ],
 };

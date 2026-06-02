@@ -21,17 +21,20 @@ export function Hero({ trip }: HeroProps) {
           Travel Plan
         </a>
         <div className="flex flex-wrap gap-2 text-sm text-white/90">
+          <a className="rounded-md px-3 py-2 transition hover:bg-white/15" href="#live">
+            即時
+          </a>
           <a className="rounded-md px-3 py-2 transition hover:bg-white/15" href="#overview">
             總覽
           </a>
           <a className="rounded-md px-3 py-2 transition hover:bg-white/15" href="#details">
             詳細
           </a>
-          <a className="rounded-md px-3 py-2 transition hover:bg-white/15" href="#budget">
-            預算
+          <a className="rounded-md px-3 py-2 transition hover:bg-white/15" href="#maps">
+            地圖
           </a>
-          <a className="rounded-md px-3 py-2 transition hover:bg-white/15" href="#info">
-            資訊
+          <a className="rounded-md px-3 py-2 transition hover:bg-white/15" href="#emergency">
+            緊急
           </a>
         </div>
       </nav>

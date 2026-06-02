@@ -1,14 +1,16 @@
 import { Clock, CreditCard, Navigation, StickyNote } from 'lucide-react';
 import type { TripDay } from '../data/trip';
 import { formatDate, formatMoney, valueOrEmpty } from '../utils/format';
+import type { DailyWeather } from '../utils/weather';
 import { EmptyState } from './EmptyState';
 import { MapButton } from './MapButton';
 
 interface DayDetailsProps {
   day?: TripDay;
+  weather?: DailyWeather;
 }
 
-export function DayDetails({ day }: DayDetailsProps) {
+export function DayDetails({ day, weather }: DayDetailsProps) {
   if (!day) return <EmptyState label="請先選擇日期" />;
 
   return (
@@ -19,6 +21,32 @@ export function DayDetails({ day }: DayDetailsProps) {
           <h3 className="mt-1 text-2xl font-bold text-stone-950">{day.city}</h3>
         </div>
         <p className="text-sm text-stone-500">{formatDate(day.date)}</p>
+      </div>
+
+      <div className="mb-5 rounded-lg border border-sky-100 bg-sky-50 p-4">
+        {weather ? (
+          <div className="grid gap-3 text-sm sm:grid-cols-[auto_1fr] sm:items-center">
+            <div className="text-4xl">{weather.icon}</div>
+            <div>
+              <p className="font-bold text-stone-950">
+                Day {day.day} 天氣：{weather.description}
+              </p>
+              <p className="mt-1 text-stone-700">
+                最高 {weather.maxTemperature}°C / 最低 {weather.minTemperature}°C / 降雨機率{' '}
+                {weather.precipitationProbability}%
+              </p>
+              {weather.precipitationProbability >= 70 ? (
+                <p className="mt-2 rounded-md bg-amber-100 px-3 py-2 font-semibold text-amber-900">
+                  提醒：可能有明顯降雨，建議把戶外行程排在上午，並準備雨具。
+                </p>
+              ) : null}
+            </div>
+          </div>
+        ) : (
+          <p className="text-sm text-stone-600">
+            Day {day.day} 天氣：尚未有預報。接近出發日後會自動顯示最高溫、最低溫與降雨機率。
+          </p>
+        )}
       </div>
 
       {day.activities.length === 0 ? (
