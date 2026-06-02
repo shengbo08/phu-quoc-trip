@@ -155,7 +155,7 @@ export const trip: TripData = {
   startDate: '2026-07-12',
   endDate: '2026-07-17',
   intro:
-    '富國島 6 日行程：航班、住宿、地圖、天氣與緊急資訊。',
+    '航班、住宿、地圖、天氣一次看。',
   companionsNote: '已付：機票 NT$8,324 + 住宿 NT$5,720 / 人。',
   coverImageUrl:
     'https://images.unsplash.com/photo-1758657281824-239a1bfb3c92?auto=format&fit=crop&fm=jpg&q=85&w=2400',
