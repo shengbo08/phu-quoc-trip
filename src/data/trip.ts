@@ -155,8 +155,8 @@ export const trip: TripData = {
   startDate: '2026-07-12',
   endDate: '2026-07-17',
   intro:
-    '7/12-7/17 富國島：航班、住宿、纜車、樂園、海邊晚餐與緊急資訊都整理好了。',
-  companionsNote: '目前花費：NT$8,324 機票 + NT$5,720 住宿，共 NT$14,044 / 人。',
+    '富國島 6 日行程：航班、住宿、地圖、天氣與緊急資訊。',
+  companionsNote: '已付：機票 NT$8,324 + 住宿 NT$5,720 / 人。',
   coverImageUrl:
     'https://images.unsplash.com/photo-1758657281824-239a1bfb3c92?auto=format&fit=crop&fm=jpg&q=85&w=2400',
   homeBaseCurrency: 'TWD',
