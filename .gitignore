@@ -5,4 +5,5 @@ dist
 .env.local
 npm-debug.log*
 vite-dev*.log
+mobile-*.png
 .DS_Store
