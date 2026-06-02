@@ -8,7 +8,6 @@ import { FlightTracker } from './components/FlightTracker';
 import { FoodRecommendations } from './components/FoodRecommendations';
 import { Hero } from './components/Hero';
 import { ImportantInfo } from './components/ImportantInfo';
-import { MapCollection } from './components/MapCollection';
 import { Section } from './components/Section';
 import { TransportList } from './components/TransportList';
 import { TripOverview } from './components/TripOverview';
@@ -58,20 +57,15 @@ function App() {
           <DayDetails day={selectedDay} weather={selectedDayWeather} />
         </Section>
 
-        <Section id="flights" eyebrow="Flight" title="航班追蹤">
-          <FlightTracker flights={trip.flightTracks} />
+        <Section id="transport" eyebrow="Transport" title="交通與航班資訊">
+          <div className="space-y-6">
+            <TransportList transports={trip.transports} />
+            <FlightTracker flights={trip.flightTracks} />
+          </div>
         </Section>
 
         <Section id="stays" eyebrow="Stay" title="住宿資訊">
           <AccommodationList accommodations={trip.accommodations} />
-        </Section>
-
-        <Section id="transport" eyebrow="Transport" title="交通資訊">
-          <TransportList transports={trip.transports} />
-        </Section>
-
-        <Section id="maps" eyebrow="Maps" title="Google Maps 景點集合">
-          <MapCollection places={trip.mapPlaces} collectionUrl={trip.mapCollectionUrl} />
         </Section>
 
         <Section id="food" eyebrow="Food" title="美食推薦">

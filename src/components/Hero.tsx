@@ -21,21 +21,11 @@ export function Hero({ trip }: HeroProps) {
           Travel Plan
         </a>
         <div className="-mx-1 flex max-w-full gap-1 overflow-x-auto px-1 text-sm text-white/90 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:flex-wrap sm:justify-end sm:gap-2 sm:overflow-visible sm:px-0">
-          <a className="shrink-0 rounded-md px-2.5 py-2 transition hover:bg-white/15 sm:px-3" href="#live">
-            即時
-          </a>
-          <a className="shrink-0 rounded-md px-2.5 py-2 transition hover:bg-white/15 sm:px-3" href="#overview">
-            總覽
-          </a>
-          <a className="shrink-0 rounded-md px-2.5 py-2 transition hover:bg-white/15 sm:px-3" href="#details">
-            詳細
-          </a>
-          <a className="shrink-0 rounded-md px-2.5 py-2 transition hover:bg-white/15 sm:px-3" href="#maps">
-            地圖
-          </a>
-          <a className="shrink-0 rounded-md px-2.5 py-2 transition hover:bg-white/15 sm:px-3" href="#emergency">
-            緊急
-          </a>
+          <NavLink href="#live" label="即時" />
+          <NavLink href="#overview" label="總覽" />
+          <NavLink href="#details" label="詳細" />
+          <NavLink href="#transport" label="交通" />
+          <NavLink href="#emergency" label="緊急" />
         </div>
       </nav>
 
@@ -73,5 +63,13 @@ export function Hero({ trip }: HeroProps) {
         </div>
       </div>
     </header>
+  );
+}
+
+function NavLink({ href, label }: { href: string; label: string }) {
+  return (
+    <a className="shrink-0 rounded-md px-2.5 py-2 transition hover:bg-white/15 sm:px-3" href={href}>
+      {label}
+    </a>
   );
 }
