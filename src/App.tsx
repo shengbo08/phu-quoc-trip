@@ -9,7 +9,6 @@ import { FoodRecommendations } from './components/FoodRecommendations';
 import { Hero } from './components/Hero';
 import { ImportantInfo } from './components/ImportantInfo';
 import { Section } from './components/Section';
-import { TransportList } from './components/TransportList';
 import { TripOverview } from './components/TripOverview';
 import { WeatherCard } from './components/WeatherCard';
 import { trip } from './data/trip';
@@ -57,11 +56,8 @@ function App() {
           <DayDetails day={selectedDay} weather={selectedDayWeather} />
         </Section>
 
-        <Section id="transport" eyebrow="Transport" title="交通與航班資訊">
-          <div className="space-y-6">
-            <TransportList transports={trip.transports} />
-            <FlightTracker flights={trip.flightTracks} />
-          </div>
+        <Section id="transport" eyebrow="Flights" title="航班追蹤">
+          <FlightTracker flights={trip.flightTracks} ticketNotes={trip.flightTicketNotes} />
         </Section>
 
         <Section id="stays" eyebrow="Stay" title="住宿資訊">
@@ -72,15 +68,15 @@ function App() {
           <FoodRecommendations categories={trip.foodRecommendations} />
         </Section>
 
-        <Section id="budget" eyebrow="Budget" title="預算與匯率核算">
+        <Section id="budget" eyebrow="Budget" title="預算與費用">
           <BudgetSection items={trip.budget} baseCurrency={trip.homeBaseCurrency} />
         </Section>
 
-        <Section id="emergency" eyebrow="Emergency" title="緊急聯絡資訊">
+        <Section id="emergency" eyebrow="Emergency" title="緊急聯絡">
           <EmergencyContacts contacts={trip.emergencyContacts} />
         </Section>
 
-        <Section id="info" eyebrow="Notes" title="重要資訊">
+        <Section id="info" eyebrow="Notes" title="重要備註">
           <ImportantInfo info={trip.importantInfo} />
         </Section>
       </main>

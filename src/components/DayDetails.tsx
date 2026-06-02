@@ -10,6 +10,21 @@ interface DayDetailsProps {
   weather?: DailyWeather;
 }
 
+const hotelDisplayNames: Record<string, { zh: string; en: string }> = {
+  'Rosie Hillside Seaview Phu Quoc Apartment': {
+    zh: '富國島 Rosie 山坡海景公寓',
+    en: 'Rosie Hillside Seaview Phu Quoc Apartment',
+  },
+  'Grand Resort Ocean Bay Phu Quoc': {
+    zh: '富國島海灣大度假村',
+    en: 'Grand Resort Ocean Bay Phu Quoc',
+  },
+  'Wyndham Grand Phu Quoc': {
+    zh: '富國島溫德姆至尊飯店',
+    en: 'Wyndham Grand Phu Quoc',
+  },
+};
+
 export function DayDetails({ day, weather }: DayDetailsProps) {
   if (!day) return <EmptyState label="請先選擇日期" />;
 
@@ -64,7 +79,7 @@ export function DayDetails({ day, weather }: DayDetailsProps) {
                     <Clock className="h-4 w-4 text-teal-700" aria-hidden="true" />
                     {valueOrEmpty(activity.time)}
                   </p>
-                  <h4 className="text-xl font-bold text-stone-950">{activity.place}</h4>
+                  <ActivityPlaceTitle place={activity.place} />
                   <p className="mt-2 leading-7 text-stone-700">{activity.activity}</p>
                   <p className="mt-3 text-sm text-stone-500">
                     地址：{valueOrEmpty(activity.address)}
@@ -100,6 +115,21 @@ export function DayDetails({ day, weather }: DayDetailsProps) {
           ))}
         </div>
       )}
+    </div>
+  );
+}
+
+function ActivityPlaceTitle({ place }: { place: string }) {
+  const hotel = hotelDisplayNames[place];
+
+  if (!hotel) {
+    return <h4 className="text-xl font-bold text-stone-950">{place}</h4>;
+  }
+
+  return (
+    <div>
+      <h4 className="text-xl font-black text-stone-950">{hotel.zh}</h4>
+      <p className="mt-1 text-sm font-semibold text-stone-500">{hotel.en}</p>
     </div>
   );
 }

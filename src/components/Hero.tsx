@@ -23,8 +23,10 @@ export function Hero({ trip }: HeroProps) {
         <div className="-mx-1 flex max-w-full gap-1 overflow-x-auto px-1 text-sm text-white/90 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:flex-wrap sm:justify-end sm:gap-2 sm:overflow-visible sm:px-0">
           <NavLink href="#live" label="即時" />
           <NavLink href="#overview" label="總覽" />
-          <NavLink href="#details" label="詳細" />
-          <NavLink href="#transport" label="交通" />
+          <NavLink href="#details" label="行程" />
+          <NavLink href="#transport" label="航班" />
+          <NavLink href="#stays" label="住宿" />
+          <NavLink href="#food" label="美食推薦" />
           <NavLink href="#emergency" label="緊急" />
         </div>
       </nav>
@@ -56,8 +58,8 @@ export function Hero({ trip }: HeroProps) {
           <div className="flex items-start gap-3 rounded-lg bg-white/12 p-4 backdrop-blur sm:col-span-2 lg:col-span-2">
             <Users className="mt-0.5 h-5 w-5 text-teal-100" aria-hidden="true" />
             <div>
-              <p className="font-semibold">旅伴與備註</p>
-              <p className="mt-1 text-white/82">{trip.companionsNote || '尚未填寫'}</p>
+              <p className="font-semibold">旅伴費用備註</p>
+              <p className="mt-1 text-white/82">{trip.companionsNote || '尚未提供'}</p>
             </div>
           </div>
         </div>

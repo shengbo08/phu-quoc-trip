@@ -29,6 +29,9 @@ export interface TripDay {
 export interface Accommodation {
   id: string;
   hotelName: string;
+  hotelNameZh?: string;
+  hotelNameEn?: string;
+  photoUrl?: string;
   checkIn: string;
   checkOut: string;
   address?: string;
@@ -100,6 +103,7 @@ export interface TripData {
   mapCollectionUrl?: string;
   foodRecommendations: FoodCategory[];
   flightTracks: FlightTrack[];
+  flightTicketNotes?: string[];
 }
 
 export interface EmergencyContact {
@@ -414,6 +418,10 @@ export const trip: TripData = {
     {
       id: 'hotel-1',
       hotelName: 'Rosie Hillside Seaview Phu Quoc Apartment',
+      hotelNameZh: '富國島 Rosie 山坡海景公寓',
+      hotelNameEn: 'Rosie Hillside Seaview Phu Quoc Apartment',
+      photoUrl:
+        'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=85',
       checkIn: '2026-07-12',
       checkOut: '2026-07-14',
       address: 'An Thoi, Phu Quoc, Vietnam',
@@ -425,6 +433,10 @@ export const trip: TripData = {
     {
       id: 'hotel-2',
       hotelName: 'Grand Resort Ocean Bay Phu Quoc',
+      hotelNameZh: '富國島海灣大度假村',
+      hotelNameEn: 'Grand Resort Ocean Bay Phu Quoc',
+      photoUrl:
+        'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=85',
       checkIn: '2026-07-14',
       checkOut: '2026-07-15',
       address: 'Phu Quoc, Kien Giang, Vietnam',
@@ -435,6 +447,10 @@ export const trip: TripData = {
     {
       id: 'hotel-3',
       hotelName: 'Wyndham Grand Phu Quoc',
+      hotelNameZh: '富國島溫德姆至尊飯店',
+      hotelNameEn: 'Wyndham Grand Phu Quoc',
+      photoUrl:
+        'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85',
       checkIn: '2026-07-15',
       checkOut: '2026-07-17',
       address: 'Bai Dai Area, Ganh Dau, Phu Quoc, Vietnam',
@@ -722,25 +738,38 @@ export const trip: TripData = {
         {
           id: 'on-the-rock',
           name: 'On The Rock Restaurant & Beach Bar',
-          recommendedItems: '海鮮、夕陽晚餐、調酒',
+          recommendedItems: '鮮蝦、鯡魚沙拉、咖哩甜點、海景調酒',
           googleMapsUrl:
-            'https://maps.google.com/?q=On+The+Rock+Restaurant+%26+Beach+Bar+Phu+Quoc',
+            'https://www.google.com/maps/search/?api=1&query=On+The+Rock+Restaurant+%26+Beach+Bar+Phu+Quoc',
           photoUrl:
             'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80',
           rating: '4.3',
-          hours: '建議以 Google Maps 當日營業時間為準',
-          averageSpend: '約 600,000-1,000,000 VND / 人',
+          hours: '請點 Google Maps 確認當日營業時間',
+          averageSpend: '約 NT$800-1,500 / 人',
         },
         {
-          id: 'crab-house',
-          name: 'Crab House Phu Quoc',
-          recommendedItems: '螃蟹、海鮮拼盤',
-          googleMapsUrl: 'https://maps.google.com/?q=Crab+House+Phu+Quoc',
+          id: 'sis-crab-house',
+          name: "Si's Crab House",
+          recommendedItems: '螃蟹、海鮮拼盤、招牌醬汁、蒜香蝦',
+          googleMapsUrl:
+            'https://www.google.com/maps/search/?api=1&query=Si%27s+Crab+House+Phu+Quoc',
           photoUrl:
             'https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=900&q=80',
-          rating: '4.4',
-          hours: '建議以 Google Maps 當日營業時間為準',
-          averageSpend: '約 500,000-900,000 VND / 人',
+          rating: '4.3',
+          hours: '請點 Google Maps 確認當日營業時間',
+          averageSpend: '約 NT$500-900 / 人',
+        },
+        {
+          id: 'camia-restaurant',
+          name: 'Camia Restaurant',
+          recommendedItems: '海鮮、越式料理、烤魚、夕陽晚餐',
+          googleMapsUrl:
+            'https://www.google.com/maps/search/?api=1&query=Camia+Restaurant+Phu+Quoc',
+          photoUrl:
+            'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80',
+          rating: '4.5',
+          hours: '請點 Google Maps 確認當日營業時間',
+          averageSpend: '約 NT$400-800 / 人',
         },
       ],
     },
@@ -749,25 +778,104 @@ export const trip: TripData = {
       restaurants: [
         {
           id: 'bun-quay-kien-xay',
-          name: 'Bun Quay Kien Xay',
-          recommendedItems: '富國島特色米粉、海鮮湯',
-          googleMapsUrl: 'https://maps.google.com/?q=Bun+Quay+Kien+Xay+Phu+Quoc',
+          name: 'Bún quậy KIẾN - XÂY',
+          recommendedItems: '富國島特色 bún quậy、海鮮米粉、現調沾醬',
+          googleMapsUrl:
+            'https://www.google.com/maps/search/?api=1&query=B%C3%BAn+qu%E1%BA%ADy+KI%E1%BA%BEN+X%C3%82Y+Phu+Quoc',
           photoUrl:
-            'https://images.unsplash.com/photo-1569058242567-93de6f36f8eb?auto=format&fit=crop&w=900&q=80',
+            'https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=900&q=80',
           rating: '4.2',
-          hours: '建議以 Google Maps 當日營業時間為準',
-          averageSpend: '約 80,000-180,000 VND / 人',
+          hours: '約 07:00-21:30，分店可能不同',
+          averageSpend: '約 NT$80-180 / 人',
         },
         {
-          id: 'xin-chao',
-          name: 'Xin Chao Seafood Restaurant',
-          recommendedItems: '越式海鮮、烤物',
-          googleMapsUrl: 'https://maps.google.com/?q=Xin+Chao+Seafood+Restaurant+Phu+Quoc',
+          id: 'anh-thu-banh-mi',
+          name: 'ANH THU - Banh Mi Xiu Mai',
+          recommendedItems: '越式麵包、xíu mại 肉丸、煎蛋',
+          googleMapsUrl:
+            'https://www.google.com/maps/search/?api=1&query=ANH+THU+Banh+Mi+Xiu+Mai+Phu+Quoc',
+          photoUrl:
+            'https://images.unsplash.com/photo-1600688640154-9619e002df30?auto=format&fit=crop&w=900&q=80',
+          rating: '4.5',
+          hours: '請點 Google Maps 確認當日營業時間',
+          averageSpend: '約 NT$50-120 / 人',
+        },
+        {
+          id: 'pho-sai-gon',
+          name: 'Pho Sai Gon',
+          recommendedItems: '牛肉河粉、清湯、越式咖啡',
+          googleMapsUrl:
+            'https://www.google.com/maps/search/?api=1&query=Pho+Sai+Gon+Phu+Quoc',
+          photoUrl:
+            'https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?auto=format&fit=crop&w=900&q=80',
+          rating: '4.5',
+          hours: '約 06:30-12:00、16:30-22:30',
+          averageSpend: '約 NT$100-200 / 人',
+        },
+        {
+          id: 'bun-quay-local-seafood-noodles',
+          name: 'Bún Quậy Kiến-Xây | Local PhuQuoc Seafood Noodles',
+          recommendedItems: '海鮮 bún quậy、魚漿、現拌醬料',
+          googleMapsUrl:
+            'https://www.google.com/maps/search/?api=1&query=B%C3%BAn+Qu%E1%BA%ADy+Ki%E1%BA%BFn-X%C3%A2y+Local+PhuQuoc+Seafood+Noodles',
+          photoUrl:
+            'https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=900&q=80',
+          rating: '4.2',
+          hours: '約 07:00-21:30，分店可能不同',
+          averageSpend: '約 NT$80-180 / 人',
+        },
+        {
+          id: 'banh-canh-minh-thu',
+          name: 'Bánh canh MINH THƯ',
+          recommendedItems: '螃蟹 bánh canh、蝦、魚板、海鮮湯麵',
+          googleMapsUrl:
+            'https://www.google.com/maps/search/?api=1&query=B%C3%A1nh+canh+MINH+TH%C6%AF+Phu+Quoc',
+          photoUrl:
+            'https://images.unsplash.com/photo-1591814468924-caf88d1232e1?auto=format&fit=crop&w=900&q=80',
+          rating: '4.3',
+          hours: '請點 Google Maps 確認當日營業時間',
+          averageSpend: '約 NT$80-150 / 人',
+        },
+        {
+          id: 'meo-kitchen',
+          name: 'MEO Kitchen',
+          recommendedItems: ' bánh xèo、越式家常菜、蛤蜊炒空心菜、pho',
+          googleMapsUrl:
+            'https://www.google.com/maps/search/?api=1&query=MEO+Kitchen+Phu+Quoc',
+          photoUrl:
+            'https://images.unsplash.com/photo-1529563021893-cc83c992d75d?auto=format&fit=crop&w=900&q=80',
+          rating: '4.6',
+          hours: '請點 Google Maps 確認當日營業時間',
+          averageSpend: '約 NT$150-350 / 人',
+        },
+        {
+          id: 'runam-sunset-town',
+          name: 'RuNam Sunset Town',
+          recommendedItems: '越式料理、咖啡、甜點、日落小鎮景觀',
+          googleMapsUrl:
+            'https://www.google.com/maps/search/?api=1&query=RuNam+Sunset+Town+Phu+Quoc',
           photoUrl:
             'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80',
-          rating: '4.1',
-          hours: '建議以 Google Maps 當日營業時間為準',
-          averageSpend: '約 300,000-700,000 VND / 人',
+          rating: '4.4',
+          hours: '請點 Google Maps 確認當日營業時間',
+          averageSpend: '約 NT$300-700 / 人',
+        },
+      ],
+    },
+    {
+      category: '披薩',
+      restaurants: [
+        {
+          id: 'home-pizza-tran-hung-dao',
+          name: 'The Home Pizza Tran Hung Dao',
+          recommendedItems: '鯡魚沙拉披薩、螃蟹義大利麵、創意越式披薩',
+          googleMapsUrl:
+            'https://www.google.com/maps/search/?api=1&query=The+Home+Pizza+Tran+Hung+Dao+Phu+Quoc',
+          photoUrl:
+            'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=900&q=80',
+          rating: '4.6',
+          hours: '約 11:00-22:00',
+          averageSpend: '約 NT$250-500 / 人',
         },
       ],
     },
@@ -776,30 +884,27 @@ export const trip: TripData = {
       restaurants: [
         {
           id: 'chuon-chuon',
-          name: 'Chuon Chuon Bistro & Sky Bar',
-          recommendedItems: '咖啡、早午餐、山景視野',
-          googleMapsUrl: 'https://maps.google.com/?q=Chuon+Chuon+Bistro+%26+Sky+Bar+Phu+Quoc',
+          name: 'Chuồn Chuồn Bistro & Bar',
+          recommendedItems: '咖啡、雞尾酒、早午餐、山景與夕陽',
+          googleMapsUrl:
+            'https://www.google.com/maps/search/?api=1&query=Chu%E1%BB%93n+Chu%E1%BB%93n+Bistro+%26+Bar+Phu+Quoc',
           photoUrl:
             'https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=900&q=80',
           rating: '4.3',
-          hours: '建議以 Google Maps 當日營業時間為準',
-          averageSpend: '約 150,000-350,000 VND / 人',
+          hours: '約 07:30-23:00',
+          averageSpend: '約 NT$250-600 / 人',
         },
-      ],
-    },
-    {
-      category: '宵夜',
-      restaurants: [
         {
-          id: 'phu-quoc-night-market-food',
-          name: 'Phu Quoc Night Market',
-          recommendedItems: '烤海鮮、越式小吃、甜點',
-          googleMapsUrl: 'https://maps.google.com/?q=Phu+Quoc+Night+Market',
+          id: 'lotus-home-cafe',
+          name: 'Lotus Home & Cafe',
+          recommendedItems: '咖啡、果汁、輕食、甜點',
+          googleMapsUrl:
+            'https://www.google.com/maps/search/?api=1&query=Lotus+Home+%26+Cafe+Phu+Quoc',
           photoUrl:
-            'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80',
-          rating: '4.0',
-          hours: '傍晚至深夜，依攤商為準',
-          averageSpend: '約 150,000-400,000 VND / 人',
+            'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80',
+          rating: '4.6',
+          hours: '請點 Google Maps 確認當日營業時間',
+          averageSpend: '約 NT$150-350 / 人',
         },
       ],
     },
@@ -814,7 +919,7 @@ export const trip: TripData = {
       to: 'SGN 胡志明市',
       departureTime: '2026-07-12 13:00',
       arrivalTime: '2026-07-12 15:00',
-      terminal: '航廈請以機場當日資訊為準',
+      terminal: 'KHH 國際航廈；SGN 轉機請依機場看板確認航廈',
       flightRadarUrl: 'https://www.flightradar24.com/data/flights/vn583',
       flightAwareUrl: 'https://www.flightaware.com/live/flight/HVN583',
       airportUrl: 'https://www.kia.gov.tw/',
@@ -828,7 +933,7 @@ export const trip: TripData = {
       to: 'PQC 富國島',
       departureTime: '2026-07-12 20:30',
       arrivalTime: '2026-07-12 21:30',
-      terminal: '航廈請以機場當日資訊為準',
+      terminal: 'SGN 國內線航廈；PQC 富國島機場',
       flightRadarUrl: 'https://www.flightradar24.com/data/flights/vn1835',
       flightAwareUrl: 'https://www.flightaware.com/live/flight/HVN1835',
       airportUrl: 'https://www.vietnamairport.vn/tansonnhatairport/en/',
@@ -842,7 +947,7 @@ export const trip: TripData = {
       to: 'SGN 胡志明市',
       departureTime: '2026-07-17 14:35',
       arrivalTime: '2026-07-17 15:45',
-      terminal: '航廈請以機場當日資訊為準',
+      terminal: 'PQC 富國島機場；SGN 抵達後轉國際線航廈',
       flightRadarUrl: 'https://www.flightradar24.com/data/flights/vn1826',
       flightAwareUrl: 'https://www.flightaware.com/live/flight/HVN1826',
       airportUrl: 'https://www.vietnamairport.vn/phuquocairport/en/',
@@ -856,10 +961,17 @@ export const trip: TripData = {
       to: 'KHH 高雄',
       departureTime: '2026-07-17 17:50',
       arrivalTime: '2026-07-17 21:50',
-      terminal: '航廈請以機場當日資訊為準',
+      terminal: 'SGN 國際線航廈；KHH 國際航廈',
       flightRadarUrl: 'https://www.flightradar24.com/data/flights/vn580',
       flightAwareUrl: 'https://www.flightaware.com/live/flight/HVN580',
       airportUrl: 'https://www.vietnamairport.vn/tansonnhatairport/en/',
     },
+  ],
+  flightTicketNotes: [
+    '纜車票：Sun World Hon Thom 跨海纜車票請集中放在手機與雲端備份。',
+    'Safari：Vinpearl Safari 電子票券請確認使用日期、入場 QR Code 與同行人數。',
+    'VinWonders：VinWonders 電子票券請與 Safari 票券分開標示，避免現場誤掃。',
+    '接送資訊：機場與飯店接送請保留司機聯絡方式、集合點截圖與付款紀錄。',
+    '電子票券：所有 PDF / QR Code 建議離線下載，另存一份在同行群組。',
   ],
 };
