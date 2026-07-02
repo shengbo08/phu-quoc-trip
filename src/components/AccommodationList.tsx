@@ -16,7 +16,7 @@ export function AccommodationList({ accommodations }: AccommodationListProps) {
 
   return (
     <>
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid gap-3 lg:grid-cols-3">
         {accommodations.map((hotel) => (
           <article
             key={hotel.id}
@@ -38,25 +38,25 @@ export function AccommodationList({ accommodations }: AccommodationListProps) {
               </button>
             ) : null}
 
-            <div className="p-4 sm:p-5">
-              <h3 className="text-xl font-black leading-tight text-stone-950">
+            <div className="p-3 sm:p-4">
+              <h3 className="text-lg font-black leading-tight text-stone-950">
                 {hotel.hotelNameZh ?? hotel.hotelName}
               </h3>
-              <p className="mt-1 text-sm font-semibold leading-6 text-stone-500">
+              <p className="mt-0.5 text-xs font-semibold leading-5 text-stone-500">
                 {hotel.hotelNameEn ?? hotel.hotelName}
               </p>
 
-              <p className="mt-4 flex items-start gap-2 text-sm leading-6 text-stone-600">
-                <CalendarCheck className="mt-1 h-4 w-4 shrink-0 text-teal-700" />
+              <p className="mt-2.5 flex items-start gap-1.5 text-xs leading-5 text-stone-600">
+                <CalendarCheck className="mt-0.5 h-3.5 w-3.5 shrink-0 text-teal-700" />
                 {formatDate(hotel.checkIn)} - {formatDate(hotel.checkOut)}
               </p>
 
-              <dl className="mt-4 space-y-3 text-sm">
+              <dl className="mt-3 space-y-2 text-xs">
                 <InfoBlock label="地址" value={valueOrEmpty(hotel.address)} />
                 <InfoBlock label="訂房資訊" value={valueOrEmpty(hotel.bookingInfo)} />
               </dl>
 
-              <div className="mt-5">
+              <div className="mt-3">
                 <MapButton url={hotel.googleMapsUrl} />
               </div>
             </div>
@@ -86,8 +86,10 @@ export function AccommodationList({ accommodations }: AccommodationListProps) {
               className="max-h-[78vh] w-full rounded-lg object-contain shadow-2xl"
             />
             <div className="mt-3 text-center text-white">
-              <p className="text-lg font-bold">{previewHotel.hotelNameZh ?? previewHotel.hotelName}</p>
-              <p className="text-sm text-white/75">
+              <p className="text-base font-bold">
+                {previewHotel.hotelNameZh ?? previewHotel.hotelName}
+              </p>
+              <p className="text-xs text-white/75">
                 {previewHotel.hotelNameEn ?? previewHotel.hotelName}
               </p>
             </div>
@@ -100,9 +102,9 @@ export function AccommodationList({ accommodations }: AccommodationListProps) {
 
 function InfoBlock({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg bg-stone-50 p-3">
+    <div className="rounded-md bg-stone-50 p-2">
       <dt className="font-semibold text-stone-800">{label}</dt>
-      <dd className="mt-1 leading-6 text-stone-600">{value}</dd>
+      <dd className="mt-0.5 leading-5 text-stone-600">{value}</dd>
     </div>
   );
 }

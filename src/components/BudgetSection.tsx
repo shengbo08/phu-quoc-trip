@@ -69,34 +69,34 @@ export function BudgetSection({ items, baseCurrency }: BudgetSectionProps) {
   if (items.length === 0) return <EmptyState />;
 
   return (
-    <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
-      <aside className="rounded-lg bg-stone-950 p-4 text-white shadow-soft sm:p-5">
-        <div className="flex items-center justify-between gap-4">
+    <div className="grid gap-3 lg:grid-cols-[0.9fr_1.1fr]">
+      <aside className="rounded-lg bg-stone-950 p-3 text-white shadow-soft sm:p-4">
+        <div className="flex items-center justify-between gap-3">
           <div>
-            <p className="text-sm font-semibold text-teal-100">總預算估算</p>
-            <p className="mt-2 text-4xl font-black">{formatTwd(totals.total)}</p>
+            <p className="text-xs font-semibold text-teal-100">總預算估算</p>
+            <p className="mt-1 text-3xl font-black">{formatTwd(totals.total)}</p>
           </div>
-          <Calculator className="h-9 w-9 text-amber-200" aria-hidden="true" />
+          <Calculator className="h-7 w-7 text-amber-200" aria-hidden="true" />
         </div>
-        <p className="mt-4 text-sm leading-6 text-white/75">
-          以 {baseCurrency} 為主要顯示幣別，外幣項目會換算成台幣方便快速抓預算。
+        <p className="mt-2 text-xs leading-5 text-white/75">
+          以 {baseCurrency} 為主要顯示幣別，外幣項目會換算成台幣方便抓預算。
         </p>
-        <div className="mt-5 rounded-lg bg-white/10 p-4 text-sm">
+        <div className="mt-3 rounded-lg bg-white/10 p-3 text-xs">
           <p className="flex items-center gap-2 font-semibold">
-            <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`h-3.5 w-3.5 ${isLoading ? 'animate-spin' : ''}`} />
             {isLoading ? '正在更新匯率' : source === 'live' ? '即時匯率已更新' : '使用備用匯率'}
           </p>
-          <p className="mt-2 text-white/70">匯率日期：{rateDate || '尚未提供'}</p>
-          {errorMessage ? <p className="mt-2 text-amber-100">{errorMessage}</p> : null}
+          <p className="mt-1.5 text-white/70">匯率日期：{rateDate || '尚未提供'}</p>
+          {errorMessage ? <p className="mt-1.5 text-amber-100">{errorMessage}</p> : null}
         </div>
       </aside>
 
-      <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+      <div className="space-y-3">
+        <div className="grid grid-cols-3 gap-1.5">
           {(Object.keys(budgetCategoryLabels) as BudgetCategory[]).map((category) => (
-            <div key={category} className="rounded-lg border border-stone-200 bg-white p-3">
-              <p className="text-sm text-stone-500">{budgetCategoryLabels[category]}</p>
-              <p className="mt-1 text-lg font-bold text-stone-950">
+            <div key={category} className="rounded-lg border border-stone-200 bg-white p-2">
+              <p className="text-xs text-stone-500">{budgetCategoryLabels[category]}</p>
+              <p className="mt-0.5 text-sm font-bold text-stone-950">
                 {formatTwd(totals.byCategory[category] ?? 0)}
               </p>
             </div>
@@ -112,20 +112,20 @@ export function BudgetSection({ items, baseCurrency }: BudgetSectionProps) {
             return (
               <div
                 key={item.id}
-                className={`grid gap-3 p-4 ${index === 0 ? '' : 'border-t border-stone-100'}`}
+                className={`grid gap-2 p-3 ${index === 0 ? '' : 'border-t border-stone-100'}`}
               >
-                <div className="flex min-w-0 items-start gap-3">
-                  <WalletCards className="mt-1 h-5 w-5 shrink-0 text-teal-700" />
+                <div className="flex min-w-0 items-start gap-2">
+                  <WalletCards className="mt-1 h-4 w-4 shrink-0 text-teal-700" />
                   <div className="min-w-0">
-                    <p className="font-semibold leading-6 text-stone-950">{item.label}</p>
-                    <p className="mt-1 text-sm leading-6 text-stone-500">
+                    <p className="text-sm font-semibold leading-5 text-stone-950">{item.label}</p>
+                    <p className="mt-0.5 text-xs leading-5 text-stone-500">
                       {budgetCategoryLabels[item.category]} · {item.note || '尚未提供'}
                     </p>
                   </div>
                 </div>
-                <div className="rounded-lg bg-stone-50 p-3">
+                <div className="rounded-md bg-stone-50 p-2 text-xs">
                   <p className="font-bold text-stone-950">{formatMoney(item.cost)}</p>
-                  <p className="mt-1 text-sm text-stone-500">約 {formatTwd(twdValue)}</p>
+                  <p className="mt-0.5 text-stone-500">約 {formatTwd(twdValue)}</p>
                 </div>
               </div>
             );

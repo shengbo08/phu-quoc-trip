@@ -43,30 +43,30 @@ export function WeatherCard({ onDailyWeatherChange }: WeatherCardProps) {
   }, [onDailyWeatherChange]);
 
   return (
-    <article className="min-w-0 rounded-lg border border-sky-100 bg-white p-4 shadow-sm sm:p-5">
-      <div className="mb-4 flex items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <span className="rounded-lg bg-sky-50 p-3 text-sky-700">
-            <CloudSun className="h-5 w-5" aria-hidden="true" />
+    <article className="min-w-0 rounded-lg border border-sky-100 bg-white p-3 shadow-sm sm:p-4">
+      <div className="mb-3 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2.5">
+          <span className="rounded-lg bg-sky-50 p-2 text-sky-700">
+            <CloudSun className="h-4 w-4" aria-hidden="true" />
           </span>
           <div>
-            <p className="text-sm font-semibold text-sky-700">富國島即時天氣</p>
-            <h3 className="text-xl font-black text-stone-950">
+            <p className="text-xs font-semibold text-sky-700">富國島即時天氣</p>
+            <h3 className="text-lg font-black text-stone-950">
               {weather ? `${weather.icon} ${weather.description}` : '載入中'}
             </h3>
           </div>
         </div>
         <RefreshCw
-          className={`h-4 w-4 text-stone-400 ${sourceState === 'loading' ? 'animate-spin' : ''}`}
+          className={`h-3.5 w-3.5 text-stone-400 ${sourceState === 'loading' ? 'animate-spin' : ''}`}
         />
       </div>
 
       {sourceState === 'error' ? (
-        <p className="rounded-lg bg-amber-50 p-3 text-sm leading-6 text-amber-800">
+        <p className="rounded-lg bg-amber-50 p-2 text-xs leading-5 text-amber-800">
           暫時無法取得即時天氣，出門前請再確認。
         </p>
       ) : (
-        <div className="grid grid-cols-2 gap-2 text-sm sm:grid-cols-3">
+        <div className="grid grid-cols-3 gap-1.5 text-xs">
           <WeatherMetric label="溫度" value={weather ? `${weather.temperature}°C` : '--'} />
           <WeatherMetric
             label="體感"
@@ -90,9 +90,9 @@ export function WeatherCard({ onDailyWeatherChange }: WeatherCardProps) {
 
 function WeatherMetric({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg bg-stone-50 p-3">
-      <p className="text-xs font-semibold text-stone-500">{label}</p>
-      <p className="mt-1 text-lg font-bold text-stone-950">{value}</p>
+    <div className="rounded-md bg-stone-50 p-2">
+      <p className="text-[11px] font-semibold text-stone-500">{label}</p>
+      <p className="mt-0.5 text-sm font-bold text-stone-950">{value}</p>
     </div>
   );
 }

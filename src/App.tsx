@@ -35,9 +35,9 @@ function App() {
     <div className="min-h-screen bg-[#f6f3ee]">
       <Hero trip={trip} />
 
-      <main className="mx-auto max-w-6xl overflow-hidden px-3 pb-14 sm:px-6">
+      <main className="mx-auto max-w-6xl overflow-hidden px-2.5 pb-12 sm:px-6">
         <Section id="live" eyebrow="Live" title="即時資訊">
-          <div className="grid gap-3 lg:grid-cols-2">
+          <div className="grid gap-2.5 lg:grid-cols-2">
             <WeatherCard onDailyWeatherChange={handleDailyWeatherChange} />
             <ExchangeRateCard />
           </div>
