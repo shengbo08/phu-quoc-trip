@@ -5,7 +5,6 @@ import { DayDetails } from './components/DayDetails';
 import { EmergencyContacts } from './components/EmergencyContacts';
 import { ExchangeRateCard } from './components/ExchangeRateCard';
 import { FlightTracker } from './components/FlightTracker';
-import { FoodRecommendations } from './components/FoodRecommendations';
 import { Hero } from './components/Hero';
 import { ImportantInfo } from './components/ImportantInfo';
 import { Section } from './components/Section';
@@ -62,10 +61,6 @@ function App() {
 
         <Section id="stays" eyebrow="Stay" title="住宿資訊">
           <AccommodationList accommodations={trip.accommodations} />
-        </Section>
-
-        <Section id="food" eyebrow="Food" title="美食推薦">
-          <FoodRecommendations categories={trip.foodRecommendations} />
         </Section>
 
         <Section id="budget" eyebrow="Budget" title="預算與費用">

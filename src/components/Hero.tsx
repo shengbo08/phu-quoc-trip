@@ -26,7 +26,6 @@ export function Hero({ trip }: HeroProps) {
           <NavLink href="#details" label="行程" />
           <NavLink href="#transport" label="航班" />
           <NavLink href="#stays" label="住宿" />
-          <NavLink href="#food" label="美食推薦" />
           <NavLink href="#emergency" label="緊急" />
         </div>
       </nav>
