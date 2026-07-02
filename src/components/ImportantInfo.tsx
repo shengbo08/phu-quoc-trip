@@ -18,7 +18,7 @@ interface ImportantInfoProps {
 
 export function ImportantInfo({ info }: ImportantInfoProps) {
   return (
-    <div className="grid gap-4 lg:grid-cols-2">
+    <div className="grid gap-3 lg:grid-cols-2">
       <InfoCard icon={BadgeInfo} title="護照與簽證" content={valueOrEmpty(info.passportVisa)} />
       <InfoCard icon={Phone} title="緊急聯絡" content={valueOrEmpty(info.emergencyContact)} />
       <InfoCard icon={Globe2} title="網路 SIM / eSIM" content={valueOrEmpty(info.internet)} />
@@ -37,10 +37,10 @@ interface InfoCardProps {
 
 function InfoCard({ icon: Icon, title, content }: InfoCardProps) {
   return (
-    <article className="rounded-lg border border-stone-200 bg-white p-5 shadow-sm">
+    <article className="rounded-lg border border-stone-200 bg-white p-4 shadow-sm">
       <div className="mb-3 flex items-center gap-3">
         <Icon className="h-5 w-5 text-teal-700" aria-hidden="true" />
-        <h3 className="text-lg font-bold text-stone-950">{title}</h3>
+        <h3 className="text-lg font-black text-stone-950">{title}</h3>
       </div>
       <p className="text-sm leading-7 text-stone-600">{content}</p>
     </article>
@@ -55,10 +55,10 @@ function TransferNoticeList({ notices }: TransferNoticeListProps) {
   if (notices.length === 0) return null;
 
   return (
-    <article className="rounded-lg border border-amber-200 bg-amber-50/70 p-5 shadow-sm lg:col-span-2">
+    <article className="rounded-lg border border-amber-200 bg-amber-50/70 p-4 shadow-sm lg:col-span-2">
       <div className="mb-4 flex items-center gap-3">
         <Plane className="h-5 w-5 text-amber-700" aria-hidden="true" />
-        <h3 className="text-lg font-bold text-stone-950">轉機提醒</h3>
+        <h3 className="text-lg font-black text-stone-950">轉機提醒</h3>
       </div>
 
       <div className="grid gap-3 md:grid-cols-2">
@@ -81,7 +81,7 @@ function TransferNoticeCard({ notice }: { notice: TransferNotice }) {
     <section className="rounded-lg border border-amber-200 bg-white p-4">
       <div className="mb-3 flex items-center gap-2">
         <Icon className="h-4 w-4 text-amber-700" aria-hidden="true" />
-        <h4 className="font-bold text-stone-950">{notice.title}</h4>
+        <h4 className="font-bold leading-tight text-stone-950">{notice.title}</h4>
       </div>
 
       {notice.highlight ? (

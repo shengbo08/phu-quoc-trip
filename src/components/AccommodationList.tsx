@@ -20,7 +20,7 @@ export function AccommodationList({ accommodations }: AccommodationListProps) {
         {accommodations.map((hotel) => (
           <article
             key={hotel.id}
-            className="overflow-hidden rounded-lg border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+            className="overflow-hidden rounded-lg border border-stone-200 bg-white shadow-sm"
           >
             {hotel.photoUrl ? (
               <button
@@ -38,7 +38,7 @@ export function AccommodationList({ accommodations }: AccommodationListProps) {
               </button>
             ) : null}
 
-            <div className="p-5">
+            <div className="p-4 sm:p-5">
               <h3 className="text-xl font-black leading-tight text-stone-950">
                 {hotel.hotelNameZh ?? hotel.hotelName}
               </h3>
@@ -46,22 +46,14 @@ export function AccommodationList({ accommodations }: AccommodationListProps) {
                 {hotel.hotelNameEn ?? hotel.hotelName}
               </p>
 
-              <p className="mt-4 flex items-start gap-2 text-sm text-stone-600">
-                <CalendarCheck className="mt-0.5 h-4 w-4 shrink-0 text-teal-700" />
+              <p className="mt-4 flex items-start gap-2 text-sm leading-6 text-stone-600">
+                <CalendarCheck className="mt-1 h-4 w-4 shrink-0 text-teal-700" />
                 {formatDate(hotel.checkIn)} - {formatDate(hotel.checkOut)}
               </p>
 
               <dl className="mt-4 space-y-3 text-sm">
-                <div>
-                  <dt className="font-semibold text-stone-800">地址</dt>
-                  <dd className="mt-1 leading-6 text-stone-600">{valueOrEmpty(hotel.address)}</dd>
-                </div>
-                <div>
-                  <dt className="font-semibold text-stone-800">訂房資訊</dt>
-                  <dd className="mt-1 leading-6 text-stone-600">
-                    {valueOrEmpty(hotel.bookingInfo)}
-                  </dd>
-                </div>
+                <InfoBlock label="地址" value={valueOrEmpty(hotel.address)} />
+                <InfoBlock label="訂房資訊" value={valueOrEmpty(hotel.bookingInfo)} />
               </dl>
 
               <div className="mt-5">
@@ -74,7 +66,7 @@ export function AccommodationList({ accommodations }: AccommodationListProps) {
 
       {previewHotel?.photoUrl ? (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-stone-950/80 p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-stone-950/80 p-3"
           role="dialog"
           aria-modal="true"
           onClick={() => setPreviewHotel(null)}
@@ -91,15 +83,26 @@ export function AccommodationList({ accommodations }: AccommodationListProps) {
             <img
               src={previewHotel.photoUrl}
               alt={previewHotel.hotelNameZh ?? previewHotel.hotelName}
-              className="max-h-[82vh] w-full rounded-lg object-contain shadow-2xl"
+              className="max-h-[78vh] w-full rounded-lg object-contain shadow-2xl"
             />
             <div className="mt-3 text-center text-white">
               <p className="text-lg font-bold">{previewHotel.hotelNameZh ?? previewHotel.hotelName}</p>
-              <p className="text-sm text-white/75">{previewHotel.hotelNameEn ?? previewHotel.hotelName}</p>
+              <p className="text-sm text-white/75">
+                {previewHotel.hotelNameEn ?? previewHotel.hotelName}
+              </p>
             </div>
           </div>
         </div>
       ) : null}
     </>
+  );
+}
+
+function InfoBlock({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-lg bg-stone-50 p-3">
+      <dt className="font-semibold text-stone-800">{label}</dt>
+      <dd className="mt-1 leading-6 text-stone-600">{value}</dd>
+    </div>
   );
 }

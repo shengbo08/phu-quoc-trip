@@ -2,11 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Calculator, RefreshCw, WalletCards } from 'lucide-react';
 import type { BudgetCategory, BudgetItem, CurrencyCode } from '../data/trip';
 import { budgetCategoryLabels, formatMoney, formatTwd } from '../utils/format';
-import {
-  convertToTwd,
-  fetchRatesToTwd,
-  type ExchangeRates,
-} from '../utils/exchangeRates';
+import { convertToTwd, fetchRatesToTwd, type ExchangeRates } from '../utils/exchangeRates';
 import { EmptyState } from './EmptyState';
 
 interface BudgetSectionProps {
@@ -43,7 +39,7 @@ export function BudgetSection({ items, baseCurrency }: BudgetSectionProps) {
       setIsLoading(false);
 
       if (result.source === 'fallback') {
-        setErrorMessage('即時匯率暫時無法取得，已改用備用匯率估算。');
+        setErrorMessage('即時匯率暫時無法取得，目前使用備用匯率估算。');
       }
     }
 
@@ -73,43 +69,41 @@ export function BudgetSection({ items, baseCurrency }: BudgetSectionProps) {
   if (items.length === 0) return <EmptyState />;
 
   return (
-    <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
-      <aside className="rounded-lg bg-stone-950 p-5 text-white shadow-soft">
+    <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
+      <aside className="rounded-lg bg-stone-950 p-4 text-white shadow-soft sm:p-5">
         <div className="flex items-center justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold text-teal-100">總預算</p>
+            <p className="text-sm font-semibold text-teal-100">總預算估算</p>
             <p className="mt-2 text-4xl font-black">{formatTwd(totals.total)}</p>
           </div>
           <Calculator className="h-9 w-9 text-amber-200" aria-hidden="true" />
         </div>
         <p className="mt-4 text-sm leading-6 text-white/75">
-          基準幣別：{baseCurrency}。外幣項目會換算為新台幣後加總。
+          以 {baseCurrency} 為主要顯示幣別，外幣項目會換算成台幣方便快速抓預算。
         </p>
         <div className="mt-5 rounded-lg bg-white/10 p-4 text-sm">
           <p className="flex items-center gap-2 font-semibold">
             <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
-            {isLoading ? '正在核實匯率' : source === 'live' ? '即時匯率已更新' : '使用備用匯率'}
+            {isLoading ? '正在更新匯率' : source === 'live' ? '即時匯率已更新' : '使用備用匯率'}
           </p>
-          <p className="mt-2 text-white/70">
-            匯率日期：{rateDate || '尚未填寫'}
-          </p>
+          <p className="mt-2 text-white/70">匯率日期：{rateDate || '尚未提供'}</p>
           {errorMessage ? <p className="mt-2 text-amber-100">{errorMessage}</p> : null}
         </div>
       </aside>
 
       <div className="space-y-4">
-        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
           {(Object.keys(budgetCategoryLabels) as BudgetCategory[]).map((category) => (
-            <div key={category} className="rounded-lg border border-stone-200 bg-white p-4">
+            <div key={category} className="rounded-lg border border-stone-200 bg-white p-3">
               <p className="text-sm text-stone-500">{budgetCategoryLabels[category]}</p>
-              <p className="mt-1 text-xl font-bold text-stone-950">
+              <p className="mt-1 text-lg font-bold text-stone-950">
                 {formatTwd(totals.byCategory[category] ?? 0)}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="rounded-lg border border-stone-200 bg-white shadow-sm">
+        <div className="overflow-hidden rounded-lg border border-stone-200 bg-white shadow-sm">
           {items.map((item, index) => {
             const twdValue = rates
               ? convertToTwd(item.cost.amount, item.cost.currency, rates)
@@ -118,20 +112,18 @@ export function BudgetSection({ items, baseCurrency }: BudgetSectionProps) {
             return (
               <div
                 key={item.id}
-                className={`grid gap-3 p-4 sm:grid-cols-[1fr_auto] ${
-                  index === 0 ? '' : 'border-t border-stone-100'
-                }`}
+                className={`grid gap-3 p-4 ${index === 0 ? '' : 'border-t border-stone-100'}`}
               >
                 <div className="flex min-w-0 items-start gap-3">
                   <WalletCards className="mt-1 h-5 w-5 shrink-0 text-teal-700" />
-                  <div>
-                    <p className="font-semibold text-stone-950">{item.label}</p>
-                    <p className="mt-1 text-sm text-stone-500">
-                      {budgetCategoryLabels[item.category]} · {item.note || '尚未填寫'}
+                  <div className="min-w-0">
+                    <p className="font-semibold leading-6 text-stone-950">{item.label}</p>
+                    <p className="mt-1 text-sm leading-6 text-stone-500">
+                      {budgetCategoryLabels[item.category]} · {item.note || '尚未提供'}
                     </p>
                   </div>
                 </div>
-                <div className="text-left sm:text-right">
+                <div className="rounded-lg bg-stone-50 p-3">
                   <p className="font-bold text-stone-950">{formatMoney(item.cost)}</p>
                   <p className="mt-1 text-sm text-stone-500">約 {formatTwd(twdValue)}</p>
                 </div>

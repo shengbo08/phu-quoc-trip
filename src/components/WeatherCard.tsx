@@ -43,16 +43,16 @@ export function WeatherCard({ onDailyWeatherChange }: WeatherCardProps) {
   }, [onDailyWeatherChange]);
 
   return (
-    <article className="min-w-0 rounded-lg border border-sky-100 bg-white p-5 shadow-sm">
+    <article className="min-w-0 rounded-lg border border-sky-100 bg-white p-4 shadow-sm sm:p-5">
       <div className="mb-4 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <span className="rounded-lg bg-sky-50 p-3 text-sky-700">
             <CloudSun className="h-5 w-5" aria-hidden="true" />
           </span>
           <div>
-            <p className="text-sm font-semibold text-sky-700">富國島目前天氣</p>
-            <h3 className="text-xl font-bold text-stone-950">
-              {weather ? `${weather.icon} ${weather.description}` : '讀取中'}
+            <p className="text-sm font-semibold text-sky-700">富國島即時天氣</p>
+            <h3 className="text-xl font-black text-stone-950">
+              {weather ? `${weather.icon} ${weather.description}` : '載入中'}
             </h3>
           </div>
         </div>
@@ -62,18 +62,18 @@ export function WeatherCard({ onDailyWeatherChange }: WeatherCardProps) {
       </div>
 
       {sourceState === 'error' ? (
-        <p className="rounded-lg bg-amber-50 p-3 text-sm text-amber-800">
-          目前無法取得即時天氣，稍後會自動重試。
+        <p className="rounded-lg bg-amber-50 p-3 text-sm leading-6 text-amber-800">
+          暫時無法取得即時天氣，出門前請再確認。
         </p>
       ) : (
-        <div className="grid grid-cols-2 gap-3 text-sm sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-2 text-sm sm:grid-cols-3">
           <WeatherMetric label="溫度" value={weather ? `${weather.temperature}°C` : '--'} />
           <WeatherMetric
             label="體感"
             value={weather ? `${weather.apparentTemperature}°C` : '--'}
           />
           <WeatherMetric
-            label="降雨機率"
+            label="降雨"
             value={weather ? `${weather.precipitationProbability}%` : '--'}
           />
           <WeatherMetric label="濕度" value={weather ? `${weather.humidity}%` : '--'} />

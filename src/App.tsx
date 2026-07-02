@@ -35,9 +35,9 @@ function App() {
     <div className="min-h-screen bg-[#f6f3ee]">
       <Hero trip={trip} />
 
-      <main className="mx-auto max-w-6xl overflow-hidden px-4 pb-16 sm:px-6">
+      <main className="mx-auto max-w-6xl overflow-hidden px-3 pb-14 sm:px-6">
         <Section id="live" eyebrow="Live" title="即時資訊">
-          <div className="grid gap-4 lg:grid-cols-2">
+          <div className="grid gap-3 lg:grid-cols-2">
             <WeatherCard onDailyWeatherChange={handleDailyWeatherChange} />
             <ExchangeRateCard />
           </div>
@@ -51,11 +51,11 @@ function App() {
           />
         </Section>
 
-        <Section id="details" eyebrow="Daily Plan" title="每日詳細行程">
+        <Section id="details" eyebrow="Daily Plan" title="每日行程">
           <DayDetails day={selectedDay} weather={selectedDayWeather} />
         </Section>
 
-        <Section id="transport" eyebrow="Flights" title="航班追蹤">
+        <Section id="transport" eyebrow="Flights" title="航班資訊">
           <FlightTracker flights={trip.flightTracks} />
         </Section>
 

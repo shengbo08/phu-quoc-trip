@@ -7,16 +7,16 @@ interface MapButtonProps {
 export function MapButton({ url }: MapButtonProps) {
   if (!url) {
     return (
-      <span className="inline-flex items-center gap-2 rounded-md bg-stone-100 px-3 py-2 text-sm font-medium text-stone-500">
+      <span className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md bg-stone-100 px-3 py-2 text-sm font-medium text-stone-500 sm:w-auto">
         <MapPinned className="h-4 w-4" aria-hidden="true" />
-        尚未填寫
+        尚未提供
       </span>
     );
   }
 
   return (
     <a
-      className="inline-flex items-center gap-2 rounded-md bg-teal-700 px-3 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+      className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md bg-teal-700 px-3 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 sm:w-auto"
       href={url}
       target="_blank"
       rel="noreferrer"

@@ -12,20 +12,20 @@ export function EmergencyContacts({ contacts }: EmergencyContactsProps) {
   if (contacts.length === 0) return <EmptyState />;
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
       {contacts.map((contact) => (
-        <article key={contact.id} className="rounded-lg border border-red-100 bg-white p-5 shadow-sm">
+        <article key={contact.id} className="rounded-lg border border-red-100 bg-white p-4 shadow-sm">
           <div className="mb-3 flex items-center gap-3">
             <span className="rounded-lg bg-red-50 p-3 text-red-700">
-              {contact.category.includes('醫院') ? (
+              {contact.name.toLowerCase().includes('hospital') ? (
                 <Hospital className="h-5 w-5" aria-hidden="true" />
               ) : (
                 <ShieldPlus className="h-5 w-5" aria-hidden="true" />
               )}
             </span>
-            <div>
+            <div className="min-w-0">
               <p className="text-sm font-semibold text-red-700">{contact.category}</p>
-              <h3 className="text-lg font-bold text-stone-950">{contact.name}</h3>
+              <h3 className="text-lg font-black leading-tight text-stone-950">{contact.name}</h3>
             </div>
           </div>
           <p className="flex gap-2 text-sm leading-6 text-stone-700">

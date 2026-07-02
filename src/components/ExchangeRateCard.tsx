@@ -38,43 +38,33 @@ export function ExchangeRateCard() {
   }, [amount, rates]);
 
   return (
-    <article className="min-w-0 rounded-lg border border-emerald-100 bg-white p-5 shadow-sm">
+    <article className="min-w-0 rounded-lg border border-emerald-100 bg-white p-4 shadow-sm sm:p-5">
       <div className="mb-4 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <span className="rounded-lg bg-emerald-50 p-3 text-emerald-700">
             <ArrowRightLeft className="h-5 w-5" aria-hidden="true" />
           </span>
           <div>
-            <p className="text-sm font-semibold text-emerald-700">今日匯率</p>
-            <h3 className="text-xl font-bold text-stone-950">TWD ⇄ VND / USD ⇄ VND</h3>
+            <p className="text-sm font-semibold text-emerald-700">即時匯率</p>
+            <h3 className="text-xl font-black text-stone-950">VND 換算 TWD</h3>
           </div>
         </div>
         <RefreshCw className={`h-4 w-4 text-stone-400 ${isLoading ? 'animate-spin' : ''}`} />
       </div>
 
-      <div className="grid gap-3 text-sm sm:grid-cols-2">
-        <div className="rounded-lg bg-stone-50 p-3">
-          <p className="text-stone-500">1 TWD</p>
-          <p className="mt-1 text-xl font-bold text-stone-950">
-            {rates ? `${Math.round(rates.twdToVnd).toLocaleString('zh-TW')} VND` : '--'}
-          </p>
-        </div>
-        <div className="rounded-lg bg-stone-50 p-3">
-          <p className="text-stone-500">1 USD</p>
-          <p className="mt-1 text-xl font-bold text-stone-950">
-            {rates ? `${Math.round(rates.usdToVnd).toLocaleString('zh-TW')} VND` : '--'}
-          </p>
-        </div>
+      <div className="grid gap-2 text-sm sm:grid-cols-2">
+        <RateBox label="1 TWD" value={rates ? `${Math.round(rates.twdToVnd).toLocaleString('zh-TW')} VND` : '--'} />
+        <RateBox label="1 USD" value={rates ? `${Math.round(rates.usdToVnd).toLocaleString('zh-TW')} VND` : '--'} />
       </div>
 
       <div className="mt-4 rounded-lg border border-stone-200 p-3">
         <label className="text-sm font-semibold text-stone-700" htmlFor="vnd-converter">
-          快速換算 VND → TWD
+          越南盾換台幣
         </label>
-        <div className="mt-2 grid gap-2 sm:grid-cols-[1fr_auto]">
+        <div className="mt-2 grid gap-2">
           <input
             id="vnd-converter"
-            className="min-w-0 rounded-md border border-stone-300 px-3 py-2 text-base focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-100"
+            className="min-h-11 min-w-0 rounded-md border border-stone-300 px-3 py-2 text-base focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-100"
             inputMode="numeric"
             value={amount}
             onChange={(event) => setAmount(event.target.value)}
@@ -98,10 +88,19 @@ export function ExchangeRateCard() {
         ))}
       </div>
 
-      <p className="mt-3 text-xs text-stone-500">
-        最後更新：{rates ? new Date(rates.updatedAt).toLocaleString('zh-TW') : '讀取中'}。
-        {rates?.source === 'fallback' ? '目前使用備用匯率。' : ''}
+      <p className="mt-3 text-xs leading-5 text-stone-500">
+        更新時間：{rates ? new Date(rates.updatedAt).toLocaleString('zh-TW') : '載入中'}
+        {rates?.source === 'fallback' ? '，目前使用備用匯率。' : ''}
       </p>
     </article>
+  );
+}
+
+function RateBox({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-lg bg-stone-50 p-3">
+      <p className="text-stone-500">{label}</p>
+      <p className="mt-1 text-xl font-bold text-stone-950">{value}</p>
+    </div>
   );
 }

@@ -15,7 +15,7 @@ export const budgetCategoryLabels = {
   accommodation: '住宿',
   transport: '交通',
   food: '餐飲',
-  ticket: '門票',
+  ticket: '票券',
   other: '其他',
 } as const;
 
@@ -23,12 +23,12 @@ export const transportTypeLabels = {
   flight: '航班',
   train: '火車',
   bus: '巴士',
-  car: '租車',
+  car: '包車',
   other: '其他',
 } as const;
 
 export function formatDate(date: string) {
-  if (!date) return '尚未填寫';
+  if (!date) return '尚未提供';
 
   const parsed = new Date(`${date}T00:00:00`);
   if (Number.isNaN(parsed.getTime())) return date;
@@ -42,7 +42,7 @@ export function formatDate(date: string) {
 }
 
 export function formatMoney(money?: Money) {
-  if (!money) return '尚未填寫';
+  if (!money) return '尚未提供';
 
   return `${currencyLabels[money.currency]}${new Intl.NumberFormat('zh-TW', {
     maximumFractionDigits: money.currency === 'TWD' ? 0 : 2,
@@ -58,5 +58,5 @@ export function formatTwd(amount: number) {
 }
 
 export function valueOrEmpty(value?: string) {
-  return value?.trim() ? value : '尚未填寫';
+  return value?.trim() ? value : '尚未提供';
 }
